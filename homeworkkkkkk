@@ -1,0 +1,88 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Exercise : MonoBehaviour
+{
+    public float horizontal;
+     Random.Range spawn = (0, 10);
+    float vertical;
+    float vertical;
+    Vector2 Vec = mew Vector2 (0,1);
+    Animation anim;
+    int  currentHealth = 5;
+    bool seconds = 5;
+    bool amdRyzen = 20f;
+
+    // ***** Create your variable here *****\\
+
+
+
+
+    void Start()
+    {
+        anim = GetComponent<Animation>();
+        currentHealth = 5;
+        StartCoroutine(GenerateScore());
+    }
+
+    void Update()
+    {
+        horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
+
+        Vector3 position = transform.position;
+
+        if(Input.GetKeyDown(KeyCode.G))
+        {
+            Debug.Log("Light Attack");
+        }
+        if(Input.GetKeyDown(KeyCode.V))
+        {
+            Debug.Log("Heavy Attack");
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            LaunchProjectile();
+        }
+            
+        
+    }
+    void FixedUpdate()
+    {
+        // ***** Change the Hard Coded values to be variable instead *****\\
+        transform.Translate(Vector3.right * horizontal * amdRyzen * Time.deltaTime);
+        transform.Translate(Vector3.up * vertical * amdRyzen * Time.deltaTime);
+    }
+
+    IEnumerator GenerateScore()
+    {
+        // ***** Change the Hard Coded true value to be variable instead *****\\
+        while (true)
+        {
+            // ***** Change the Hard Coded values to be variable instead *****\\
+            yield return new seconds;
+            int index = Random.Range(0, 10);
+
+            // ***** Change the Hard Coded true value to be variable instead *****\\
+            if (true)
+            {
+                Debug.Log("Score increasing");
+            }
+            
+        }
+    }
+
+    void LaunchProjectile()
+    {
+        GameObject projectileObject = Instantiate(projectilePrefab, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
+
+        // ***** Change the Hard Coded Vector2 value to be variable instead *****\\
+        projectile.Launch(new, 300);
+        
+        animator.SetTrigger("Launch");
+        audioSource.PlayOneShot(shootingSound);
+    }
+    
+
+}
